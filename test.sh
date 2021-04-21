@@ -21,10 +21,9 @@ runTest () {
 
 ./sh/setup.sh "$src_path" "$script"
 
-runTest "A1" a1
-runTest "A2" a2
-runTest "A3" a3
-runTest "A4" a4
+runTest "TEST 1" test1
+runTest "TEST 2" test2
+runTest "TEST 3" test3
 
 echo
 

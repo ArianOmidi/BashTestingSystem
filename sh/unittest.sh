@@ -45,7 +45,6 @@ do
     file_base+=("$line")
 done < "$test_list"
 
-
 # Loop the array
 for file in "${file_base[@]}"; do
     echo "-------------------------------------"

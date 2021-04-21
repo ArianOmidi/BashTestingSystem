@@ -11,7 +11,7 @@ if [[ ! -d "$1" ]]; then
     printf "ERROR : Directory '%s' does not exist\n" "$1" 
     exit 1
 else 
-    rm -rf "$1"/BackingStore "$1"/PARTITION
+    # TODO: ADD TEARDOWN METHODS
 fi
 
 exit 0
