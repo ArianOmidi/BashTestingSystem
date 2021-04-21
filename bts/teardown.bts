@@ -12,6 +12,9 @@ if [[ ! -d "$1" ]]; then
     exit 1
 else 
     # TODO: ADD TEARDOWN METHODS
+
+    # remove output files
+    rm -f *-out.*
 fi
 
 exit 0

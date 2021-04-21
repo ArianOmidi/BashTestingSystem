@@ -9,8 +9,7 @@ script="compile.sh"
 
 runTest () {
   printf "\n$test_hr" "$1 TESTS"
-  ./sh/unittest.sh "$app" $2
-  ./sh/teardown.sh $2
+  ./bts/unittest.sh "$app" $2
   printf "$test_br"
 
   # # Pause by prompt
@@ -19,11 +18,13 @@ runTest () {
   #   [ "$input_data" == "a" ] && break
 }
 
-./sh/setup.sh "$src_path" "$script"
+./bts/setup.sh "$src_path" "$script"
 
 runTest "TEST 1" test1
 runTest "TEST 2" test2
 runTest "TEST 3" test3
+
+./bts/teardown.sh $2
 
 echo
 
