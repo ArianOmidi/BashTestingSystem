@@ -8,55 +8,31 @@ BTS (Bash Testing System) is a simple testing framework for Bash which handles t
 
 [![ASCIICSA][product-screenshot]](https://example.com)
 
-### Customization Features:
-* Color Selection
-  * Select number of shades of Greyscale
-  * Select standard 8 or 16 ANSII colors for a retro look 
-  * Automatically sample colors from source image
-* Text
-  * Select the font used by uploading font bitmap
-  * Choose characters used 
-* Filter
-  * Add filters to get desired output
-  * 
-
-<!-- GETTING STARTED -->
-## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Installation
-
-1. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-2. Install project dependencies
-   ```sh
-   pip install -r requirements.txt -t /path/to/lib/directory
-   ```
+### Features:
+* Setup Customization
+* Unit Testing
+  * Run multiple files per suite
+  * Output validation 
+  * Pretty printed results
+* Teardown Customization
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-### Convert an image to ASCII image
-```sh
-  python ascii.py /path/to/image
-```
+### Setup Customization
+Add functions in `./bts/setup.bts` to be run before every suite.
   
-### Convert an image to animated ASCII image
-```sh
-  python ascii_animation.py /path/to/image
-```
+### Testing Suite
+1. Set path to application executable and root directory to run app in `./test.bts`.
+2. Create test suite by adding a test directory which includes a `tests.csv` with a list of files to run in the suite.
+3. Add `runTest "TEST_NAME" <path_to_suite>` in `./test.bts`.
+4. Repeat for each test and run `./test.bts` to run all tests. 
 
-### Convert an image to ASCII video
-```sh
-  python ascii_video.py /path/to/video
-```
+### Teardown Customization
+Add functions in `./bts/teardown.bts` to be run after every suite.
+
 
 ## Notes 
-
 I developed BTS while creating a Bash Kernel Operating System and found myself wasting time validating inputs before each commit. During the development of BTS, I soon realized the complexity of testing frameworks and realized how much of it happens ***behind the scenes***. This is just a rudimentary testing platform and any tips and/or improvements are much appreciated.
 
 
