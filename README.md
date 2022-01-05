@@ -17,6 +17,8 @@ BTS (Bash Testing System) is a simple testing framework for Bash which handles t
 <!-- USAGE EXAMPLES -->
 ## Usage
 
+***An example test suite can me seen in `./example_test/`***
+
 ### Setup Customization
 Add functions in `./bts/setup.bts` to be run before every suite.
   
