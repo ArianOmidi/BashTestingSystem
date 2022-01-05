@@ -1,12 +1,10 @@
 # BTS: Bash Testing System
 
-
 <!-- ABOUT THE PROJECT -->
-## About
 
 BTS (Bash Testing System) is a simple testing framework for Bash which handles the unit testing ***behind the scenes***. It provides a simple way to verify that the UNIX programs you write behave as expected. 
 
-[![ASCIICSA][product-screenshot]](https://example.com)
+<img width="354" alt="Screen Shot 2022-01-05 at 12 41 43 AM" src="https://user-images.githubusercontent.com/59782445/148166945-8d95af10-896e-464b-988a-b99068b08f29.png"> <img width="354" alt="Screen Shot 2022-01-05 at 12 47 34 AM" src="https://user-images.githubusercontent.com/59782445/148166919-d6a1a01f-52be-43f1-b226-725106b7af8c.png"> 
 
 ### Features:
 * Setup Customization
@@ -33,6 +31,8 @@ Add functions in `./bts/teardown.bts` to be run after every suite.
 
 
 ## Notes 
-I developed BTS while creating a Bash Kernel Operating System and found myself wasting time validating inputs before each commit. During the development of BTS, I soon realized the complexity of testing frameworks and realized how much of it happens ***behind the scenes***. This is just a rudimentary testing platform and any tips and/or improvements are much appreciated.
+I developed BTS while creating a Bash Kernel Operating System and found myself wasting time validating inputs before each commit. During the development of BTS, I soon realized the complexity of testing frameworks and how much of it happens ***behind the scenes***. 
+
+This is just a rudimentary testing platform and any tips and/or improvements are much appreciated.
 
 
