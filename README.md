@@ -33,7 +33,7 @@ Add functions in `./bts/teardown.bts` to be run after every suite.
 
 
 ## Notes 
-I developed BTS while creating a Bash Kernel Operating System and found myself wasting time validating inputs before each commit. During the development of BTS, I soon realized the complexity of testing frameworks and how much of it happens ***behind the scenes***. 
+I developed BTS while creating a Bash [OS Kernel](https://github.com/ArianOmidi/OSKernel) and found myself wasting time validating inputs before each commit. During the development of BTS, I soon realized the complexity of testing frameworks and how much of it happens ***behind the scenes***. 
 
 This is just a rudimentary testing platform and any tips and/or improvements are much appreciated.
 
