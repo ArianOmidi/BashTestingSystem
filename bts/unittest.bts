@@ -8,8 +8,8 @@ fi
 
 bin="$1"           # The application (from command arg)
 diff="diff -iad"   # Diff command, or what ever
-test_list="tests.csv"
-ext="txt"
+test_list="./test/tests.csv"
+ext="log"
 
 PASS_COLOR='\033[0;32m'
 FAIL_COLOR='\033[0;31m'
@@ -17,24 +17,20 @@ NO_COLOR='\033[0m'
 
 # test file directory
 if [ $# -ge 2 ]; then
-    dir="$2"
-    curdir=$(pwd)
+    srcdir="$2"
 else
-    dir="."
-    curdir="."
+    srcdir="."
 fi
 
 # check if directory exists
-if [[ ! -d "$dir" ]]; then
-    printf "ERROR : Directory '%s' does not exist\n" "$dir" "$file_in"
+if [[ ! -d "$srcdir" ]]; then
+    printf "ERROR : Directory '%s' does not exist\n" "$srcdir"
     exit 2
-else 
-    cd "$dir"
 fi
 
 # check if test list exists
 if [ ! -f "$test_list" ]; then
-    printf "ERROR : Test list '%s/%s' does not exist\n" "$dir" "$test_list"
+    printf "ERROR : Test list '%s' does not exist\n" "$test_list"
     exit 3
 fi
 
@@ -49,25 +45,25 @@ done < "$test_list"
 for file in "${file_base[@]}"; do
     echo "-------------------------------------"
     # Padd file_base with suffixes
-    file_in="$file.$ext"             # The in file
-    file_out_val="$file-expected.$ext"       # The out file to check against
-    file_out_tst="$file-out.$ext"   # The outfile from test application
+    file_in="${srcdir}/${file}"            # The in file
+    file_out_val="./test/expected/$file.$ext"       # The out file to check against
+    file_out_tst="./test/actual/$file.$ext"   # The outfile from test application
 
     # Validate infile exists (do the same for out validate file)
     if [ ! -f "$file_in" ]; then
-        printf "ERROR : Input file '%s/%s' does not exist\n" "$dir" "$file_in"
+        printf "ERROR : Input file '%s' does not exist\n" "$file_in"
         continue;
     fi
     if [ ! -f "$file_out_val" ]; then
-        printf "ERROR : Validation file '%s/%s' does not exist\n" "$dir" "$file_out_val"
+        printf "ERROR : Validation file '%s' does not exist\n" "$file_out_val"
         continue;
     fi
 
     # print the test performed
-    printf "> %s/%s\t" "$dir" "$file_in"
+    printf "> %s\t" "$file_in"
     
     # Run application, redirect in file to app, and output to out file
-    "./$bin" < "$file_in" > "$file_out_tst"
+    "$bin" < "$file_in" > "$file_out_tst"
 
     # Execute diff
     output=$($diff "$file_out_val" "$file_out_tst")
@@ -90,8 +86,6 @@ for file in "${file_base[@]}"; do
     # [ "$input_data" == "a" ] && break
 done
 echo "-------------------------------------"
-
-cd "$curdir"
 
 # Clean exit with status 0
 exit 0

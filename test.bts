@@ -3,9 +3,8 @@
 test_hr="================= %s =================\n"
 test_br="============================================\n"
 
-app="../../src/c/mykernel"
-src_path="../src/sh/"
-script="compile.sh"
+app="psql cs421"
+src_path="./PG-260835976/pgsql"
 
 runTest () {
   printf "\n$test_hr" "$1 TESTS"
@@ -18,13 +17,7 @@ runTest () {
   #   [ "$input_data" == "a" ] && break
 }
 
-./bts/setup.sh "$src_path" "$script"
-
-runTest "TEST 1" test1
-runTest "TEST 2" test2
-runTest "TEST 3" test3
-
-./bts/teardown.sh $2
+runTest "SQL Queries" $src_path
 
 echo
 
