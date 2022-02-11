@@ -8,7 +8,7 @@ src_path="./PG-260835976/pgsql"
 
 runTest () {
   printf "\n$test_hr" "$1 TESTS"
-  ./test/bts/unittest.sh "$app" $2
+  ./test/bts/unittest.bts "$app" $2
   printf "$test_br"
 
   # # Pause by prompt

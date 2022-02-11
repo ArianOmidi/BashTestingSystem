@@ -9,7 +9,7 @@ fi
 bin="$1"           # The application (from command arg)
 diff="diff -iad"   # Diff command, or what ever
 test_list="./test/tests.csv"
-ext="log"
+ext="out"
 
 PASS_COLOR='\033[0;32m'
 FAIL_COLOR='\033[0;31m'
@@ -63,7 +63,7 @@ for file in "${file_base[@]}"; do
     printf "> %s\t" "$file_in"
     
     # Run application, redirect in file to app, and output to out file
-    "$bin" < "$file_in" > "$file_out_tst"
+    $bin < "$file_in" > "$file_out_tst"
 
     # Execute diff
     output=$($diff "$file_out_val" "$file_out_tst")
