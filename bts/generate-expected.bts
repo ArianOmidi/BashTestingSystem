@@ -1,18 +1,19 @@
 #!/bin/bash
 
+
 # If number of arguments less then 1; print usage and exit
 if [ $# -lt 2 ]; then
     printf "Usage: %s <application> <src-location> [output-location]\n" "$0" >&2
     exit 1
 fi 
 
-bin="$1"           # The application (from command arg)
-srcdir="$2"        # src location
+bin="psql cs421"                # The application (from command arg)
+srcdir="./PG-260835976/pgsql"        # src location
 test_list="./test/tests.csv"
 ext="out"         
 
 # expected file directory
-if [ $# -ge 3 ]; then
+if [ $# -ge 1 ]; then
     expdir="./test/$3"
 else
     expdir="./test/expected"
