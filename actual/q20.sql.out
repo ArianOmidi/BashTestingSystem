@@ -1,0 +1,34 @@
+ language |   genre   
+----------+-----------
+ Arabic   | Action
+ Arabic   | Adventure
+ Arabic   | Drama
+ Arabic   | History
+ English  | Drama
+ French   | Adventure
+ French   | Animation
+ French   | Drama
+ French   | Sci-Fi
+ German   | Drama
+ Greek    | Action
+ Greek    | Adventure
+ Greek    | Drama
+ Greek    | History
+ Italian  | Comedy
+ Italian  | Drama
+ Latin    | Action
+ Latin    | Adventure
+ Latin    | Drama
+ Latin    | History
+ Persian  | Action
+ Persian  | Adventure
+ Persian  | Drama
+ Persian  | History
+ Polish   | Comedy
+ Polish   | Drama
+ Polish   | Romance
+ Spanish  | Comedy
+ Spanish  | Drama
+ Spanish  | Romance
+(30 rows)
+

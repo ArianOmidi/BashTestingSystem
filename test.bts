@@ -17,7 +17,7 @@ runTest () {
   #   [ "$input_data" == "a" ] && break
 }
 
-runTest "SQL Queries" $src_path
+runTest "SQL" $src_path
 
 echo
 

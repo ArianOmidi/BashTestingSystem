@@ -1,12 +1,5 @@
 #!/bin/bash
 
-
-# If number of arguments less then 1; print usage and exit
-if [ $# -lt 2 ]; then
-    printf "Usage: %s <application> <src-location> [output-location]\n" "$0" >&2
-    exit 1
-fi 
-
 bin="psql cs421"                # The application (from command arg)
 srcdir="./PG-260835976/pgsql"        # src location
 test_list="./test/tests.csv"
@@ -38,7 +31,6 @@ do
     file_base+=("$line")
 done < "$test_list"
 
-echo "-------------------------------------"
 # Loop the array
 for file in "${file_base[@]}"; do
     
@@ -53,13 +45,12 @@ for file in "${file_base[@]}"; do
     fi
 
     # print the test performed
-    printf "> %s\t" "$file_in"
+    printf "> %s\n" "$file_in"
     
     # Run application, redirect in file to app, and output to out file
     $bin < "$file_in" > "$file_out"
 
 done
-echo "-------------------------------------"
 
 # Clean exit with status 0
 exit 0

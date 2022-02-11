@@ -1,0 +1,10 @@
+          title          | releasedate | numreviews 
+-------------------------+-------------+------------
+ Luca                    | 2021-06-18  |          3
+ Pig                     | 2021-07-16  |          3
+ Psycho Goreman          | 2021-01-22  |          1
+ The Dig                 | 2021-01-29  |          1
+ Space Jam: A New Legacy | 2021-07-16  |          1
+ The Tomorrow War        | 2021-07-02  |          0
+(6 rows)
+
