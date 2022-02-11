@@ -28,6 +28,16 @@ if [[ ! -d "$srcdir" ]]; then
     exit 2
 fi
 
+# check if exp directory exists
+if [[ ! -d "./test/expected" ]]; then
+    mkdir "./test/expected"
+fi
+
+# check if out directory exists
+if [[ ! -d "./test/actual" ]]; then
+    mkdir "./test/actual"
+fi
+
 # check if test list exists
 if [ ! -f "$test_list" ]; then
     printf "ERROR : Test list '%s' does not exist\n" "$test_list"

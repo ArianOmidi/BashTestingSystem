@@ -12,10 +12,15 @@ else
     expdir="./test/expected"
 fi
 
-# check if directory exists
+# check if src directory exists
 if [[ ! -d "$srcdir" ]]; then
     printf "ERROR : Directory '%s' does not exist\n" "$srcdir"
     exit 2
+fi
+
+# check if out directory exists
+if [[ ! -d "$expdir" ]]; then
+    mkdir $expdir
 fi
 
 # check if test list exists
