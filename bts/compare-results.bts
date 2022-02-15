@@ -35,13 +35,13 @@ if [[ ! -d "$3" ]]; then
 fi
 
 # check if exp directory exists
-if [[ ! -d "./test/$srcdir1" ]]; then
-    mkdir "./test/$srcdir1"
+if [[ ! -d "./test/out/$srcdir1" ]]; then
+    mkdir -p "./test/out/$srcdir1"
 fi
 
 # check if out directory exists
-if [[ ! -d "./test/$srcdir2" ]]; then
-    mkdir "./test/$srcdir2"
+if [[ ! -d "./test/out/$srcdir2" ]]; then
+    mkdir -p "./test/out/$srcdir2"
 fi
 
 # add tests from test list to file base
@@ -57,8 +57,8 @@ for file in "${file_base[@]}"; do
     # Padd file_base with suffixes
     file_in_1="$2/${file}"            # The in files
     file_in_2="$3/${file}"            # The in files
-    file_out_1="./test/$srcdir1/$file.$ext"       # The out file to check against
-    file_out_2="./test/$srcdir2/$file.$ext"   # The outfile from test application
+    file_out_1="./test/out/$srcdir1/$file.$ext"       # The out file to check against
+    file_out_2="./test/out/$srcdir2/$file.$ext"   # The outfile from test application
 
     # Validate infile exists (do the same for out validate file)
     if [ ! -f "$file_in_1" ]; then
