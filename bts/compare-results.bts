@@ -55,8 +55,8 @@ done < "$test_list"
 for file in "${file_base[@]}"; do
     echo "-------------------------------------"
     # Padd file_base with suffixes
-    file_in_1="${srcdir1}/${file}"            # The in files
-    file_in_2="${srcdir2}/${file}"            # The in files
+    file_in_1="$2/${file}"            # The in files
+    file_in_2="$3/${file}"            # The in files
     file_out_1="./test/$srcdir1/$file.$ext"       # The out file to check against
     file_out_2="./test/$srcdir2/$file.$ext"   # The outfile from test application
 
