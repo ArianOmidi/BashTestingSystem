@@ -7,10 +7,10 @@ app="psql cs421"
 src_path_1="./PG-260835976/pgsql"
 src_path_2="./PG-260835976/pgsql"
 
-if [ $# -ge 1 ] && [ ! -d "$1" ]; then
+if [ $# -ge 1 ]; then
     src_path_1=$1
 fi 
-if [ $# -ge 2 ] && [ ! -d "$2" ]; then
+if [ $# -ge 2 ]; then
     src_path_2=$2
 fi 
 
