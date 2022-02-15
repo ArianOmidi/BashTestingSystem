@@ -1,12 +1,14 @@
 #!/bin/bash
 
 # If number of arguments less then 1; print usage and exit
-if [ $# -lt 1 ]; then
-    printf "Usage: %s <application> [<location>]\n" "$0" >&2
+if [ $# -lt 3 ]; then
+    printf "Usage: %s <application> <src_dir_1> <src_dir_2>\n" "$0" >&2
     exit 1
 fi 
 
 bin="$1"           # The application (from command arg)
+srcdir1=`eval basename $(dirname $2)`
+srcdir2=`eval basename $(dirname $3)`
 diff="diff -iad"   # Diff command, or what ever
 test_list="./test/tests.csv"
 ext="out"
@@ -15,33 +17,31 @@ PASS_COLOR='\033[0;32m'
 FAIL_COLOR='\033[0;31m'
 NO_COLOR='\033[0m' 
 
-# test file directory
-if [ $# -ge 2 ]; then
-    srcdir="$2"
-else
-    srcdir="."
-fi
-
-# check if directory exists
-if [[ ! -d "$srcdir" ]]; then
-    printf "ERROR : Directory '%s' does not exist\n" "$srcdir"
-    exit 2
-fi
-
-# check if exp directory exists
-if [[ ! -d "./test/expected" ]]; then
-    mkdir "./test/expected"
-fi
-
-# check if out directory exists
-if [[ ! -d "./test/actual" ]]; then
-    mkdir "./test/actual"
-fi
-
 # check if test list exists
 if [ ! -f "$test_list" ]; then
     printf "ERROR : Test list '%s' does not exist\n" "$test_list"
     exit 3
+fi
+
+# check if directory exists
+if [[ ! -d "$2" ]]; then
+    printf "ERROR : Directory '%s' does not exist\n" "$2"
+    exit 2
+fi
+
+if [[ ! -d "$3" ]]; then
+    printf "ERROR : Directory '%s' does not exist\n" "$3"
+    exit 2
+fi
+
+# check if exp directory exists
+if [[ ! -d "./test/$srcdir1" ]]; then
+    mkdir "./test/$srcdir1"
+fi
+
+# check if out directory exists
+if [[ ! -d "./test/$srcdir2" ]]; then
+    mkdir "./test/$srcdir2"
 fi
 
 # add tests from test list to file base
@@ -55,28 +55,30 @@ done < "$test_list"
 for file in "${file_base[@]}"; do
     echo "-------------------------------------"
     # Padd file_base with suffixes
-    file_in="${srcdir}/${file}"            # The in file
-    file_out_val="./test/expected/$file.$ext"       # The out file to check against
-    file_out_tst="./test/actual/$file.$ext"   # The outfile from test application
+    file_in_1="${srcdir1}/${file}"            # The in files
+    file_in_2="${srcdir2}/${file}"            # The in files
+    file_out_1="./test/$srcdir1/$file.$ext"       # The out file to check against
+    file_out_2="./test/$srcdir2/$file.$ext"   # The outfile from test application
 
     # Validate infile exists (do the same for out validate file)
-    if [ ! -f "$file_in" ]; then
-        printf "ERROR : Input file '%s' does not exist\n" "$file_in"
+    if [ ! -f "$file_in_1" ]; then
+        printf "ERROR : Input file '%s' does not exist\n" "$file_in_1"
         continue;
     fi
-    if [ ! -f "$file_out_val" ]; then
-        printf "ERROR : Validation file '%s' does not exist\n" "$file_out_val"
+    if [ ! -f "$file_in_2" ]; then
+        printf "ERROR : Input file '%s' does not exist\n" "$file_in_2"
         continue;
     fi
 
     # print the test performed
-    printf "> %s\t" "$file_in"
+    printf "> %s\t" "$file"
     
     # Run application, redirect in file to app, and output to out file
-    $bin < "$file_in" > "$file_out_tst"
+    $bin < "$file_in_1" > "$file_out_1"
+    $bin < "$file_in_2" > "$file_out_2"
 
     # Execute diff
-    output=$($diff "$file_out_val" "$file_out_tst")
+    output=$($diff "$file_out_1" "$file_out_2")
 
     # Check exit code from previous command (ie diff)
     # We need to add this to a variable else we can't print it

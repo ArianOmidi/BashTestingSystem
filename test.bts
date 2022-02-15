@@ -4,11 +4,12 @@ test_hr="================= %s =================\n"
 test_br="============================================\n"
 
 app="psql cs421"
-src_path="./PG-260835976/pgsql"
+src_path_1="./PG-260835976/pgsql"
+src_path_2="./PG-260835976/pgsql"
 
 runTest () {
   printf "\n$test_hr" "$1 TESTS"
-  ./test/bts/unittest.bts "$app" $2
+  ./test/bts/compare-results.bts "$app" $2 $3
   printf "$test_br"
 
   # # Pause by prompt
@@ -17,7 +18,7 @@ runTest () {
   #   [ "$input_data" == "a" ] && break
 }
 
-runTest "SQL" $src_path
+runTest "SQL" $src_path_1 $src_path_2
 
 echo
 
