@@ -6,10 +6,13 @@ test_list="./test/tests.csv"
 ext="out"         
 
 # expected file directory
-if [ $# -ge 1 ]; then
-    expdir="./test/$3"
+if [ $# -ge 1]; then
+    expdir="$1"
 else
     expdir="./test/expected"
+fi
+if [ $# -ge 2]; then
+    srcdir="$2"
 fi
 
 # check if src directory exists
